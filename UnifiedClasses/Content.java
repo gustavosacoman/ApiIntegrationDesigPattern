@@ -4,20 +4,20 @@
         
         private String accessToken;
         private String text;
-        private String imageUrl;
+        private String image;
 
-        public Content(String accessToken, String text, String imageUrl) {
+        public Content(String accessToken, String text, String image) {
             this.accessToken = accessToken;
             this.text = text;
-            this.imageUrl = imageUrl;
+            this.image = image;
         }
 
         public String getAccessToken() {
             return accessToken;
         }
 
-        public String getImageUrl() {
-            return imageUrl;
+        public String getImage() {
+            return image;
         }
 
         public String getText() {

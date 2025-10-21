@@ -7,23 +7,23 @@ import interfaces.ISocialMediaGateway;
 
 public class InstagramAdapter implements ISocialMediaGateway {
 
-    private  final InstagramAPI apiExterna;
+    private  final InstagramAPI externalApi;
 
-    public InstagramAdapter(InstagramAPI apiExterna) {
-        this.apiExterna = apiExterna;
+    public InstagramAdapter(InstagramAPI externalApi) {
+        this.externalApi = externalApi;
     }
 
     @Override
-    public Content postar(Content conteudo) {
-        byte[] imageBytes = conteudo.getImageUrl().getBytes();
+    public Content post(Content conteudo) {
+        byte[] imageBytes = conteudo.getImage().getBytes();
 
-        apiExterna.publishPhoto(conteudo.getAccessToken(), imageBytes, conteudo.getText());
+        externalApi.publishPhoto(conteudo.getAccessToken(), imageBytes, conteudo.getText());
         return conteudo;
     }
 
     @Override
     public Statistics getStatistics(String postId) {
-        String apiResponse = apiExterna.getPostStatistics(postId);
+        String apiResponse = externalApi.getPostStatistics(postId);
 
         if (apiResponse.startsWith("error")) {
             return new Statistics(postId, 0, 0, 0, 0, 0);

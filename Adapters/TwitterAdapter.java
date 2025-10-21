@@ -6,21 +6,21 @@ import interfaces.*;
 
 public class TwitterAdapter implements ISocialMediaGateway {
     
-    private final TwitterAPI apiExterna;
+    private final TwitterAPI externalApi;
 
-    public TwitterAdapter(TwitterAPI apiExterna) {
-        this.apiExterna = apiExterna;
+    public TwitterAdapter(TwitterAPI externalApi) {
+        this.externalApi = externalApi;
     }
 
     @Override
-    public Content postar(Content conteudo) {
-        apiExterna.postTweet(conteudo.getAccessToken(), conteudo.getText());
+    public Content post(Content conteudo) {
+        externalApi.postTweet(conteudo.getAccessToken(), conteudo.getText());
         return conteudo;
     }
 
     @Override
     public Statistics getStatistics(String postId) {
-        String apiResponse =apiExterna.getStatus(postId);
+        String apiResponse = externalApi.getStatus(postId);
 
         if (apiResponse.startsWith("error")) {
             return new Statistics(postId, 0, 0, 0, 0, 0);

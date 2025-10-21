@@ -4,7 +4,7 @@ import UnifiedClasses.Statistics;
 
 public interface ISocialMediaGateway {
     
-    Content postar(Content conteudo);
+    Content post(Content content);
 
     Statistics getStatistics(String postId);
 }

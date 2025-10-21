@@ -7,21 +7,21 @@ import interfaces.ISocialMediaGateway;
 
 public class LinkedinAdapter implements ISocialMediaGateway {
 
-    private final LinkedInAPI apiExterna;
+    private final LinkedInAPI externalApi;
 
-    public LinkedinAdapter(LinkedInAPI apiExterna) {
-        this.apiExterna = apiExterna;
+    public LinkedinAdapter(LinkedInAPI externalApi) {
+        this.externalApi = externalApi;
     }
 
     @Override
-    public Content postar(Content conteudo) {
-        apiExterna.share(conteudo.getAccessToken(), conteudo.getImageUrl(), conteudo.getText());
+    public Content post(Content conteudo) {
+        externalApi.share(conteudo.getAccessToken(), conteudo.getImage(), conteudo.getText());
         return conteudo;
     }
 
     @Override
     public Statistics getStatistics(String postId) {
-        String apiResponse = apiExterna.getPostStatistics(postId);
+        String apiResponse = externalApi.getPostStatistics(postId);
 
         if (apiResponse.startsWith("error")) {
             return new Statistics(postId, 0, 0, 0, 0, 0);
