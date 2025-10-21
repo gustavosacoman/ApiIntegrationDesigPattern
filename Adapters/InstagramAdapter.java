@@ -22,10 +22,21 @@ public class InstagramAdapter implements ISocialMediaGateway {
     }
 
     @Override
-    public Statistics obtainStatistics(Statistics stats) {
-        apiExterna.postStatistics(stats.getPostId(), stats.getLikes(),
-        stats.getViews(), stats.getComments(), stats.getShares(), stats.getSaves());
-        return stats;
+    public Statistics getStatistics(String postId) {
+        String apiResponse = apiExterna.getPostStatistics(postId);
+
+        if (apiResponse.startsWith("error")) {
+            return new Statistics(postId, 0, 0, 0, 0, 0);
+        }
+
+        String[] stats = apiResponse.split(",");
+        int likes = Integer.parseInt(stats[0].split(":")[1]);
+        int views = Integer.parseInt(stats[1].split(":")[1]);
+        int comments = Integer.parseInt(stats[2].split(":")[1]);
+        int shares = Integer.parseInt(stats[3].split(":")[1]);
+        int saves = Integer.parseInt(stats[4].split(":")[1]);
+
+        return new Statistics(postId, likes, shares, comments, views, saves);
     }
     
 }

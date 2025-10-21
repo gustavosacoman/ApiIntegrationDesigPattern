@@ -5,10 +5,12 @@ public class TwitterAPI {
         System.out.println("Tweet posted: " + message);
     }
 
-    public void obtainStatistics(String postId, int likes, int retweets, int comments) {
-        System.out.println("Obtaining statistics for post: " + postId);
-        System.out.println("Likes: " + likes);
-        System.out.println("Retweets: " + retweets);
-        System.out.println("Comments: " + comments);
+    public String getStatus(String postId) {
+
+        if (postId == null || postId.isEmpty()) {
+            return "error:invalid_post_id";
+        }
+
+        return "likes:100,retweets:50,comments:10";
     }
 }

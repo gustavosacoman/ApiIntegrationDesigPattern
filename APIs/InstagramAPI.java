@@ -6,12 +6,15 @@ public class InstagramAPI {
         System.out.println("Instagram photo published: " + caption);
     }
 
-    public void postStatistics(String postId, int likes, int views, int comments, int shares, int saves) {
-        System.out.println("Instagram statistics posted ");
-        System.out.println("Likes: " + likes);
-        System.out.println("Views: " + views);
-        System.out.println("Comments: " + comments);
-        System.out.println("Shares: " + shares);
-        System.out.println("Saves: " + saves);
+    public String getPostStatistics(String postId) {
+        
+        if (postId.equals("invalid")) {
+            System.out.println("error: invalid post ID");
+            return "error:invalid_post_id";
+        }
+
+        return "likes:100,views:2000,comments:30,shares:10,saves:5";
     }
+ 
+    
 }

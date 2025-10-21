@@ -6,11 +6,13 @@ public class LinkedInAPI {
         return true;
     }
 
-    public void getStatistics(String token, int likes, int views, int comments, int shares) {
-        System.out.println("LinkedIn statistics retrieved ");
-        System.out.println("Likes: " + likes);
-        System.out.println("Views: " + views);
-        System.out.println("Comments: " + comments);
-        System.out.println("Shares: " + shares);
+    public String getPostStatistics(String token) {
+        
+        if (token.equals("invalid")) {
+            System.out.println("error: invalid token");
+            return "error:invalid_token";
+        }
+
+        return "likes:150,views:2000,comments:30,shares:10";
     }
 }

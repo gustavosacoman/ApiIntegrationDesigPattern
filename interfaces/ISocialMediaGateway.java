@@ -6,5 +6,5 @@ public interface ISocialMediaGateway {
     
     Content postar(Content conteudo);
 
-    Statistics obtainStatistics(Statistics stats);
+    Statistics getStatistics(String postId);
 }
