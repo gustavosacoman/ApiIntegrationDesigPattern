@@ -7,3 +7,5 @@
 ### Diagrama 01 
 
 ![Diagrama01](https://github.com/gustavosacoman/ApiIntegrationDesigPattern/blob/main/assets/Diagrama%20de%20classes.png)
+
+
